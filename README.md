@@ -12,7 +12,7 @@ Por grupos de máximo 5 persoas debedes deseñar unha aplicación para o manexo 
 
 Unha clase Usuario que almacenará a información de cada un dos usuarios da nosa aplicación e deberá conter como mínimo os seguintes atributos:
 email: debe cumplir o formato dunha dirección de correo electrónico válida.
-contrasinal: debe ter unha lonxitude mínima de 8 caracteres, e incluir como mínimo un número, unha letra e un carácter especial. Non debemos almacenar o contrasinal en claro, senon un hash do introducido polo usuario.
+contrasinal: debe ter unha lonxitude mínima de 8 caracteres, e incluir como mínimo un número, unha letra e un carácter especial. Non debemos almacenar o contrasinal en claro, senon un hash do introducido polo usuario (MessageDigest).
 web: debe cumplir o formato dunha URL válida.
 nacemento: debe ser unha data anterior á fecha actual.
 Unha clase helper Validador para a validación de datos.
