@@ -30,7 +30,7 @@ public class Validator {
                 tieneCaracterEspecial = true;
             }
         }
-        return "tieneNumero: " + tieneNumero + " | tieneLetra: " + tieneLetra + " | tieneLetra: " + tieneCaracterEspecial ;
+        return "tieneNumero: " + tieneNumero + " | tieneLetra: " + tieneLetra + " | tieneLetra: " + tieneCaracterEspecial;
     }
 
     public static boolean validarWeb(String web) {
