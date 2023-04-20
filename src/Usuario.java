@@ -1,18 +1,17 @@
+
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
-import java.util.Base64;
 
 public class Usuario {
     // Atributos da clase Usuario
+	private String usuario;
     private String correo;
     private String contrasinalHash;
     private String web;
-    private LocalDate nacemento;
+    private String nacemento;
 
     // Constructor da clase Usuario
-    public Usuario(String correo, String contrasinal, String web, LocalDate nacemento) {
+    public Usuario(String user, String correo, String contrasinal, String web, String nacemento) {
+    	this.usuario= user;
         this.correo = correo;
         this.contrasinalHash = xerarHashContrasinal(contrasinal);
         this.web = web;
@@ -20,7 +19,7 @@ public class Usuario {
     }
 
     // Método para xerar o hash da contrasinal usando o algoritmo SHA-256
-    private String xerarHashContrasinal(String contrasinal) {
+    public static String xerarHashContrasinal(String contrasinal) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(contrasinal.getBytes(StandardCharsets.UTF_8));
@@ -56,22 +55,30 @@ public class Usuario {
         this.web = web;
     }
 
-    public LocalDate getNacemento() {
+    public String getNacemento() {
         return nacemento;
     }
 
-    public void setNacemento(LocalDate nacemento) {
+    public void setNacemento(String nacemento) {
         this.nacemento = nacemento;
     }
 
     // Método toString para amosar a información do usuario
     @Override
     public String toString() {
-        return "Usuario{" +
-                "correo='" + correo + '\'' +
-                ", contrasinalHash='" + contrasinalHash + '\'' +
-                ", web='" + web + '\'' +
-                ", nacemento=" + nacemento +
+        return "Usuario{" + usuario + 
+                "\n correo='" + correo + '\'' +
+                ",\n contrasinalHash='" + contrasinalHash + '\'' +
+                ", \nweb='" + web + '\'' +
+                ", \n nacemento=" + nacemento +
                 '}';
     }
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 }
