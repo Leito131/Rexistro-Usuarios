@@ -11,7 +11,7 @@ public class Validator {
         int arroba = email.indexOf('@');
         int punto = email.lastIndexOf('.');
         if (arroba < 1 || punto < arroba + 2 || punto + 2 > email.length()) {
-            System.err.println("El e-mail introducido tiene el formato correcto.");
+            System.err.println("El e-mail introducido no tiene el formato correcto.");
             return valido;
         }
         valido = true;
@@ -33,7 +33,7 @@ public class Validator {
                 tieneNumero = true;
             } else if (Character.isLetter(c)) {
                 tieneLetra = true;
-            } else if ("@#$%^&+=".indexOf(c) >= 0) {
+            } else if ("@#$%^&+=.,-?¿!¡()*:;<>/".indexOf(c) >= 0) {
                 tieneCaracterEspecial = true;
             }
         }
