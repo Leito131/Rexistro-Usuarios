@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+tarefa9,junit.tarefa9,PanelRegistro.Comprobar,70,135,3,5,18,28,3,3,0,2
+tarefa9,junit.tarefa9,paqueta,3,0,0,0,1,0,1,0,1,0
+tarefa9,junit.tarefa9,Main,8,0,0,0,3,0,2,0,2,0
+tarefa9,junit.tarefa9,Validator,36,122,14,22,15,35,14,9,0,5
+tarefa9,junit.tarefa9,Usuario,29,80,0,0,13,17,6,8,6,8
+tarefa9,junit.tarefa9,VentanaRegistro,0,37,0,0,0,11,0,1,0,1
+tarefa9,junit.tarefa9,PanelRegistro,0,173,0,0,0,32,0,1,0,1

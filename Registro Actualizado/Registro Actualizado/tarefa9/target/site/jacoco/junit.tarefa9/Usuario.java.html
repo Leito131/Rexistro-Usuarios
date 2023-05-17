@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tarefa9</a> &gt; <a href="index.source.html" class="el_package">junit.tarefa9</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">package junit.tarefa9;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.util.Base64;
+
+public class Usuario {
+    // Atributos da clase Usuario
+	private String usuario;
+    private String correo;
+    private String contrasinalHash;
+    private String web;
+    private String Contrasinal;
+    private String nacemento;
+
+    // Constructor da clase Usuario
+<span class="fc" id="L19">    public Usuario(String user, String contrasinal,String correo, String web, String nacemento) {</span>
+<span class="fc" id="L20">    	this.usuario= user;</span>
+<span class="fc" id="L21">        this.correo = correo;</span>
+<span class="fc" id="L22">        this.Contrasinal= contrasinal;</span>
+<span class="fc" id="L23">        this.contrasinalHash = xerarHashContrasinal(contrasinal);</span>
+<span class="fc" id="L24">        this.web = web;</span>
+<span class="fc" id="L25">        this.nacemento = nacemento;</span>
+<span class="fc" id="L26">    }</span>
+
+    // Método para xerar o hash da contrasinal usando o algoritmo SHA-256
+    public static String xerarHashContrasinal(String contrasinal) {
+        try {
+<span class="fc" id="L31">            MessageDigest md = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="fc" id="L32">            byte[] hash = md.digest(contrasinal.getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L33">            return Base64.getEncoder().encodeToString(hash);</span>
+<span class="nc" id="L34">        } catch (NoSuchAlgorithmException e) {</span>
+            // Nunca debería suceder, pois SHA-256 é un algoritmo soportado
+<span class="nc" id="L36">            throw new RuntimeException(e);</span>
+        }
+    }
+
+    // Métodos get e set para os atributos da clase Usuario
+    public String getCorreo() {
+<span class="fc" id="L42">        return correo;</span>
+    }
+
+    public void setCorreo(String correo) {
+<span class="nc" id="L46">        this.correo = correo;</span>
+<span class="nc" id="L47">    }</span>
+
+    public String getContrasinalHash() {
+<span class="nc" id="L50">        return contrasinalHash;</span>
+    }
+    public String getContrasinal() {
+<span class="fc" id="L53">        return Contrasinal;</span>
+    }
+
+    public void setContrasinalHash(String contrasinalHash) {
+<span class="nc" id="L57">        this.contrasinalHash = contrasinalHash;</span>
+<span class="nc" id="L58">    }</span>
+
+    public String getWeb() {
+<span class="fc" id="L61">        return web;</span>
+    }
+
+    public void setWeb(String web) {
+<span class="nc" id="L65">        this.web = web;</span>
+<span class="nc" id="L66">    }</span>
+
+    public String getNacemento() {
+<span class="fc" id="L69">        return nacemento;</span>
+    }
+
+    public void setNacemento(String nacemento) {
+<span class="nc" id="L73">        this.nacemento = nacemento;</span>
+<span class="nc" id="L74">    }</span>
+
+    // Método toString para amosar a información do usuario
+    @Override
+    public String toString() {
+<span class="fc" id="L79">        return &quot;Usuario: &quot; + usuario + </span>
+        		&quot;\nContrasinal:&quot; + contrasinalHash +
+                &quot;\nCorreo Electronico:&quot; + correo +
+                &quot;\nDireccion URL:&quot; + web  +
+                &quot;\nFecha de nacimiento:&quot; + nacemento;
+    }
+
+	public String getUsuario() {
+<span class="fc" id="L87">		return usuario;</span>
+	}
+
+	public void setUsuario(String usuario) {
+<span class="nc" id="L91">		this.usuario = usuario;</span>
+<span class="nc" id="L92">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
