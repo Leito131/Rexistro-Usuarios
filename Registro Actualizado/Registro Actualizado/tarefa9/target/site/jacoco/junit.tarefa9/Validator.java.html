@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tarefa9</a> &gt; <a href="index.source.html" class="el_package">junit.tarefa9</a> &gt; <span class="el_source">Validator.java</span></div><h1>Validator.java</h1><pre class="source lang-java linenums">package junit.tarefa9;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+<span class="fc" id="L6">public class Validator {</span>
+
+	public static boolean validarEmail(String email) {
+<span class="fc" id="L9">        boolean valido = false;        </span>
+<span class="pc bpc" id="L10" title="2 of 4 branches missed.">        if (email == null || email.isEmpty()) {</span>
+<span class="nc" id="L11">            System.err.println(&quot;El campo e-mail está vacío.&quot;);</span>
+<span class="nc" id="L12">            return valido;</span>
+        }
+<span class="fc" id="L14">        int arroba = email.indexOf('@');</span>
+<span class="fc" id="L15">        int punto = email.lastIndexOf('.');</span>
+<span class="pc bpc" id="L16" title="3 of 6 branches missed.">        if (arroba &lt; 1 || punto &lt; arroba + 2 || punto + 2 &gt; email.length()) {</span>
+<span class="nc" id="L17">            System.err.println(&quot;El e-mail introducido no tiene el formato correcto.&quot;);</span>
+<span class="nc" id="L18">            return valido;</span>
+        }
+<span class="fc" id="L20">        valido = true;</span>
+<span class="fc" id="L21">        return valido;</span>
+    }
+
+    public static boolean validarContrasinal(String contrasinal) {
+<span class="fc" id="L25">        boolean valido = false;</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        if (contrasinal == null || contrasinal.length() &lt; 8 ) {</span>
+<span class="fc" id="L27">            System.err.println(&quot;La contraseña no es lo suficientemente larga.&quot;);</span>
+<span class="fc" id="L28">            return valido;</span>
+        }
+<span class="fc" id="L30">        boolean tieneNumero = false;</span>
+<span class="fc" id="L31">        boolean tieneLetra = false;</span>
+<span class="fc" id="L32">        boolean tieneCaracterEspecial = false;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (int i = 0; i &lt; contrasinal.length(); i++) {</span>
+<span class="fc" id="L34">            char c = contrasinal.charAt(i);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (Character.isDigit(c)) {</span>
+<span class="fc" id="L36">                tieneNumero = true;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            } else if (Character.isLetter(c)) {</span>
+<span class="fc" id="L38">                tieneLetra = true;</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            } else if (&quot;@#$%^&amp;+=.,-?¿!¡()*:;&lt;&gt;/&quot;.indexOf(c) &gt;= 0) {</span>
+<span class="fc" id="L40">                tieneCaracterEspecial = true;</span>
+            }
+        }
+
+<span class="pc bpc" id="L44" title="3 of 6 branches missed.">        if (!tieneNumero || !tieneLetra || !tieneCaracterEspecial){</span>
+<span class="nc" id="L45">            System.err.println(&quot;La contraseña debe contener un número, una letra y un caracter especial.&quot;);</span>
+<span class="nc" id="L46">            return valido;</span>
+        }else{
+<span class="fc" id="L48">            valido = true;</span>
+<span class="fc" id="L49">            return valido;</span>
+        }
+    }
+
+    public static boolean validarWeb(String web) {
+<span class="pc bpc" id="L54" title="2 of 4 branches missed.">        if (web == null || web.isEmpty()) {</span>
+<span class="nc" id="L55">            System.err.println(&quot;El campo web está vacío.&quot;);</span>
+<span class="nc" id="L56">            return false;</span>
+        }
+        try {
+<span class="fc" id="L59">            new java.net.URL(web).toURI();</span>
+<span class="fc" id="L60">            return true;</span>
+<span class="nc" id="L61">        } catch (Exception e) {</span>
+<span class="nc" id="L62">            System.err.println(&quot;La web introducida no tiene el formato correcto.&quot;);</span>
+<span class="nc" id="L63">            return false;</span>
+        }
+    }
+
+    public static boolean validarNacemento(LocalDate nacemento) {
+<span class="fc" id="L68">        boolean valido = false;</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (nacemento == null) {</span>
+<span class="nc" id="L70">            System.err.println(&quot;El campo nacimiento está vacío.&quot;);</span>
+<span class="nc" id="L71">            return valido;</span>
+        }
+
+<span class="fc" id="L74">        LocalDate dataActual =  LocalDate.now();</span>
+
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if (!nacemento.isBefore(dataActual)){</span>
+<span class="nc" id="L77">            System.err.println(&quot;La fecha introducida no es válida.&quot;);</span>
+<span class="nc" id="L78">            return valido;</span>
+        }else{
+<span class="fc" id="L80">            valido = true;</span>
+<span class="fc" id="L81">            return valido;</span>
+        }
+
+        
+         
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
